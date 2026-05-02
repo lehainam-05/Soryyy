@@ -41,6 +41,11 @@
     0%,100% { transform: rotate(-2deg) translateY(0); }
     50%      { transform: rotate(2deg) translateY(-7px); }
   }
+  @keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
   .btn-row {
     display: flex; gap: 20px;
@@ -49,27 +54,30 @@
   }
 
   .btn-yes {
-    background: #d42b2b; color: #fff;
+    color: #fff;
     border: none; border-radius: 50px;
     padding: 13px 38px; font-size: 17px; font-weight: 700;
     font-family: 'Nunito', sans-serif; cursor: pointer;
-    box-shadow: 0 4px 0 #9e1a1a;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+    background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+    background-size: 400% 400%;
     --yesScale: 1;
     --yesLift: 0px;
     transform: translateY(var(--yesLift)) scale(var(--yesScale));
     transform-origin: center;
-    transition: transform 0.12s ease;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    animation: rainbow 3.5s linear infinite;
   }
   .btn-yes:hover  { --yesLift: -2px; }
   .btn-yes:active { --yesLift: 2px; box-shadow: 0 1px 0 #9e1a1a; }
 
   .btn-no {
-    background: #2e7d32; color: #fff;
+    background: #d42b2b; color: #fff;
     border: none; border-radius: 50px;
     padding: 13px 30px; font-size: 16px; font-weight: 700;
     font-family: 'Nunito', sans-serif; cursor: pointer;
     position: relative; white-space: nowrap;
-    box-shadow: 0 4px 0 #1b5e20;
+    box-shadow: 0 4px 0 #9e1a1a;
     transition: left 0.16s ease, top 0.16s ease;
     will-change: left, top;
     z-index: 2;
@@ -167,8 +175,8 @@
     <img src="Capoo%20Bugcat%20Sticker%20-%20Capoo%20Bugcat%20Cry%20-%20Discover%20&%20Share%20GIFs.gif" alt="Capoo crying gif">
   </div>
 
-  <div class="btn-row" id="btnRow">
-    <button class="btn-yes" id="btnYes" onclick="sayYes()">Vâng</button>
+    <div class="btn-row" id="btnRow">
+    <button class="btn-yes" id="btnYes" onclick="sayYes()">Đồng ý</button>
     <button class="btn-no"  id="btnNo"  onmouseenter="runAway()" onpointerdown="runAway()">Không</button>
   </div>
 </div>
